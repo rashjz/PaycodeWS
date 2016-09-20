@@ -23,13 +23,10 @@ public class AuthenticationService {
         if (null == authCredentials) {
             return false;
         }
-        // header value format will be "Basic encodedstring" for Basic
-        // authentication. Example "Basic YWRtaW46YWRtaW4="
         final String encodedUserPassword = authCredentials.replaceFirst("Basic" + " ", "");
         String usernameAndPassword = null;
         try {
             byte[] decodedBytes = DatatypeConverter.parseBase64Binary(encodedUserPassword);
-//            System.out.println(decodedBytes);
             usernameAndPassword = new String(decodedBytes, "UTF-8");
 
             final StringTokenizer tokenizer = new StringTokenizer(usernameAndPassword, ":");
