@@ -32,11 +32,9 @@ public class RestAuthenticationFilter implements javax.servlet.Filter {
 
             HttpServletRequest httpServletRequest = (HttpServletRequest) request;
             String authCredentials = httpServletRequest.getHeader(AUTHENTICATION_HEADER);
-            LOG.info("cmFzaGp6OnBhcmtldDQ3MA==    ---------------------------- " + authCredentials);
             // better injected
             AuthenticationService authenticationService = new AuthenticationService(); 
             boolean authenticationStatus = authenticationService.authenticate(authCredentials);
-//            LOG.info(" ---------------------------- " + authenticationStatus);
             if (authenticationStatus) {
                 filter.doFilter(request, response);
             } else {
